@@ -1,0 +1,57 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        Title="Anisotropy" Height="260" Width="340">
+  <Design.DataContext>
+    <vm:AnisotropyViewModel/>
+  </Design.DataContext>
+    <Grid ColumnDefinitions="100,130,100" RowDefinitions="30,30,30,30,30,30,30,40" Margin="5">
+      <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center">Name</TextBlock>
+      <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name.Value}"></TextBox>
+      <Button Grid.Row="0" Grid.Column="2" Margin="2" Command="{Binding LookAt}">Look At</Button>
+      <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+                 VerticalAlignment="Center">Atlas</TextBlock>
+      <DropDown Grid.Row="1" Grid.Column="1" Items="{Binding Atlases}"
+                SelectedItem="{Binding SelectedAtlas.Value}"></DropDown>
+      <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center">Region</TextBlock>
+      <DropDown Grid.Row="2" Grid.Column="1" Items="{Binding Regions}" SelectedItem="{Binding SelectedRegion.Value, Mode=TwoWay}"
+                IsEnabled="{Binding EnableSelectRegion.Value}"></DropDown>
+      <Button Grid.Row="1" Grid.Column="2" Margin="2" Command="{Binding AddRegion}" IsEnabled="{Binding !NewEnergyPart.Value}">Add Region</Button>
+      <Button Grid.Row="2" Grid.Column="2" Margin="2" Command="{Binding CancelAddRegion}" IsEnabled="{Binding NewEnergyPart.Value}">Cancel</Button>
+      <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center">Value</TextBlock>
+      <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Value.Value}"></TextBox>
+      
+      <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" Margin="10,0,0,0" >Visible</TextBlock>
+      <CheckBox Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                Margin="0,0,10,0" IsChecked="{Binding Visible.Value}"></CheckBox>      
+      <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center">Vector</TextBlock>
+      <TextBox Grid.Row="4" Grid.Column="1" Width="40" HorizontalAlignment="Left" 
+               Text="{Binding VectorX.Value}"></TextBox>
+      <TextBox Grid.Row="4" Grid.Column="1" Width="40" HorizontalAlignment="Center"
+               Text="{Binding VectorY.Value}"></TextBox>
+      <TextBox Grid.Row="4" Grid.Column="1" Width="40" HorizontalAlignment="Right"
+               Text="{Binding VectorZ.Value}"></TextBox>
+      
+      <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center">Point</TextBlock>
+      <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Left"
+               Text="{Binding PointX.Value}"></TextBox>
+      <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Center"
+               Text="{Binding PointY.Value}"></TextBox>
+      <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Right"
+               Text="{Binding PointZ.Value}"></TextBox>
+      <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center">Color</TextBlock>
+      <Button Grid.Row="6" Grid.Column="1" Margin="2" Command="{Binding SelectColor}" 
+              Background="{Binding ColorBrush.Value}">SelectColor</Button>
+      <Button Grid.Row="7" Grid.Column="0" Margin="3" Command="{Binding Apply}">Apply</Button>
+      <Button Grid.Row="7" Grid.Column="1" Margin="3" Command="{Binding Delete}">Delete Region</Button>
+      <Button Grid.Row="7" Grid.Column="2" Margin="3" Command="{Binding Back}">Back</Button>
+    
+    </Grid>
+</Window>

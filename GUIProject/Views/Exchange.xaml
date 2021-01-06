@@ -1,0 +1,69 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        Title="Exchange"        
+         Height="320" Width="340">
+  <Design.DataContext>
+    <vm:ExchangeViewModel/>
+  </Design.DataContext>
+  <Grid ColumnDefinitions="100,130,100" RowDefinitions="30,30,30,30,30,30,30,30,30,40" Margin="5">
+    <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Name</TextBlock>
+    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name.Value}"></TextBox>
+    <Button Grid.Row="0" Grid.Column="2" Margin="2" Command="{Binding LookAt}">Look At</Button>
+    <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Atlas</TextBlock>
+    <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Sigma</TextBlock>
+    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name.Value}"></TextBox>
+    <DropDown Grid.Row="2" Grid.Column="1" Items="{Binding Atlases}"
+              SelectedItem="{Binding SelectedAtlas.Value}"></DropDown>
+    <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Region</TextBlock>
+    <DropDown Grid.Row="3" Grid.Column="1" Items="{Binding Regions}" SelectedItem="{Binding SelectedRegion.Value, Mode=TwoWay}"
+              IsEnabled="{Binding EnableSelectRegion.Value}"></DropDown>
+    <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Norm</TextBlock>
+    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Norm.Value}"></TextBox>
+
+    <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left"
+               VerticalAlignment="Center" Margin="10,0,0,0" >Visible</TextBlock>
+    <CheckBox Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"
+              Margin="0,0,10,0" IsChecked="{Binding Visible.Value}"></CheckBox>
+    <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Scalar Field Vector</TextBlock>
+    <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Left"
+             Text="{Binding VectorX.Value}"></TextBox>
+    <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Center"
+             Text="{Binding VectorY.Value}"></TextBox>
+    <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Right"
+             Text="{Binding VectorZ.Value}"></TextBox>
+
+    <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Scalar Field Value</TextBlock>
+    <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Value.Value}"></TextBox>
+
+
+    <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="10,0,0,0" >Sign</TextBlock>
+    <RadioButton Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" Margin="-50,0,0,0" IsChecked="{Binding Sign.Value}">+</RadioButton>
+    <RadioButton Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" Margin="50,0,0,0" IsChecked="{Binding !Sign.Value}">-</RadioButton>
+
+
+
+
+    <TextBlock Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Color</TextBlock>
+    <Button Grid.Row="8" Grid.Column="1" Margin="2" Command="{Binding SelectColor}"
+            Background="{Binding ColorBrush.Value}">SelectColor</Button>
+    <Button Grid.Row="9" Grid.Column="0" Margin="3" Command="{Binding Apply}">Apply</Button>
+    <Button Grid.Row="9" Grid.Column="1" Margin="3" HorizontalAlignment="Left" Command="{Binding ChangeSurface}">&lt;</Button>
+    <TextBlock Grid.Row="9" Grid.Column="1" Margin="-20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" 
+               >Surface</TextBlock>
+    <TextBlock Grid.Row="9" Grid.Column="1" Margin="40,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+             Text="{Binding SelectedSurface.Value}"></TextBlock>
+    <Button Grid.Row="9" Grid.Column="1" Margin="3" HorizontalAlignment="Right" Command="{Binding ChangeSurface}">></Button>
+    <Button Grid.Row="9" Grid.Column="2" Margin="3" Command="{Binding Back}">Back</Button>
+
+  </Grid>
+</Window>

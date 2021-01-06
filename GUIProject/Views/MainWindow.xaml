@@ -1,0 +1,58 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        
+        Title="SVT"
+        MinHeight="60" Height="60" 
+        MinWidth="400" Width="400">
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+  <Grid>
+    <Menu Name="Alpha" DockPanel.Dock="Top" VerticalAlignment="Top" KeyboardNavigation.TabNavigation="Cycle" MaxHeight="20">
+      <MenuItem Name="File" Header="File" KeyboardNavigation.TabNavigation="Continue">
+        <MenuItem Header="New" Command="{Binding CreateNew}"></MenuItem>
+        <MenuItem Header="Open" Command="{Binding OpenFile}"></MenuItem>
+        <MenuItem Header="Save As" Command="{Binding SaveFileAs}" ></MenuItem>
+        <MenuItem Header="File Preview" Command="{Binding OpenPreViewWindow}"></MenuItem>
+        <Separator/>
+        <MenuItem Header="Exit" Command="{Binding Exit}"></MenuItem>
+      </MenuItem>
+      <MenuItem Header="View" KeyboardNavigation.TabNavigation="Continue">
+        <MenuItem Header="View Atlas Window" Command="{Binding OpenAtlasWindow}"></MenuItem>
+        <MenuItem Header="View Script Window" Command="{Binding OpenScriptWindow}" ></MenuItem>
+        <MenuItem Header="View Energy Window" Command="{Binding OpenEnergyWindow}"></MenuItem>
+        <MenuItem Header="View Uninterpreted Text Window" Command="{Binding OpenUninterpretedWindow}"></MenuItem>
+        <MenuItem Header="Visualization Window" Command="{Binding OpenVisualizationWindow}"></MenuItem>
+      </MenuItem>
+      <MenuItem Header="Options">
+        <MenuItem Header="Graphic Window Size"></MenuItem>
+        <MenuItem Header="Print Screen Options" Command="{Binding SetPrintScreenPatch}"></MenuItem>
+        <MenuItem Header="Axis Multiplier" Command="{Binding OpenAxisMultiplier}"></MenuItem>
+      </MenuItem>
+    </Menu>
+    <Grid Margin="5,20,5,5" MaxHeight="100" VerticalAlignment="Top">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="40"></RowDefinition>
+        <RowDefinition Height="40"></RowDefinition>
+      </Grid.RowDefinitions>
+      
+      <Button Margin="2" KeyboardNavigation.TabNavigation="Continue" Grid.Column="0" 
+              Command="{Binding CreateNew}" ClickMode="Press">New</Button>
+      <Button Margin="2" KeyboardNavigation.TabNavigation="Continue" Grid.Column="1" 
+              Command="{Binding OpenFile}" ClickMode="Press" 
+      IsEnabled="{Binding !IsGraphicWindowOpen.Value}">Open</Button>
+      <Button Margin="2" KeyboardNavigation.TabNavigation="Continue" Grid.Column="2" ClickMode="Press" 
+              Command="{Binding PrintScreen}">Print Screen</Button>
+      <TextBlock Grid.Row="1" Text="{Binding Patch.Value}" Grid.ColumnSpan="3"></TextBlock>
+    </Grid>
+    
+
+  </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        Title="X Y Z Axis Multiplier"
+        Height="135" Width="245">
+  <Design.DataContext>
+    <vm:XyzAxisMultiplierViewModel/>
+  </Design.DataContext> 
+    <Grid ColumnDefinitions="100,20,100,20" RowDefinitions="30,30,30,40" Margin="5">
+      <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">X Axis</TextBlock>
+      <Button Grid.Row="0" Grid.Column="1" Command="{Binding DecreaseX}">&lt;</Button>
+      <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding X.Value}"></TextBox>
+      <Button Grid.Row="0" Grid.Column="3" Command="{Binding IncreaseX}">&gt;</Button>
+    <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">Y Axis</TextBlock>
+      <Button Grid.Row="1" Grid.Column="1" Command="{Binding DecreaseY}">&lt;</Button>
+      <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Y.Value}"></TextBox>
+      <Button Grid.Row="1" Grid.Column="3" Command="{Binding IncreaseY}">&gt;</Button>
+    <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">Z Axis</TextBlock>
+      <Button Grid.Row="2" Grid.Column="1" Command="{Binding DecreaseZ}">&lt;</Button>
+      <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Z.Value}"></TextBox>
+      <Button Grid.Row="2" Grid.Column="3" Command="{Binding IncreaseZ}">&gt;</Button>
+    <Button Grid.Row="3" Grid.Column="0" Margin="2" Command="{Binding Apply}">OK</Button>
+    <Button Grid.Row="3" Grid.Column="2" Margin="2" Command="{Binding CloseWindow}">Close</Button>
+  </Grid>
+</Window>

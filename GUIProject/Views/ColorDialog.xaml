@@ -1,0 +1,38 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ColorDialog" Width="500" Height="220">
+  <Design.DataContext>
+    <vm:ColorDialogViewModel/>
+  </Design.DataContext>
+  <Grid >
+    <Grid.ColumnDefinitions >
+      <ColumnDefinition Width="20"/>
+      <ColumnDefinition Width="200"/>
+      <ColumnDefinition Width="60"/>
+      <ColumnDefinition Width="60"/>
+      <ColumnDefinition Width="150"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Select Color</TextBlock>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">R</TextBlock>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">G</TextBlock>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3">B</TextBlock>
+    <Slider Grid.Column="1" Grid.Row="1" Value="{Binding R.Value,Mode=TwoWay}" VerticalAlignment="Center" Minimum="0" Maximum="255"></Slider>
+    <Slider Grid.Column="1" Grid.Row="2" Value="{Binding G.Value,Mode=TwoWay}" VerticalAlignment="Center" Minimum="0" Maximum="255"></Slider>
+    <Slider Grid.Column="1" Grid.Row="3" Value="{Binding B.Value,Mode=TwoWay}" VerticalAlignment="Center" Minimum="0" Maximum="255"></Slider>
+    <TextBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Text="{Binding R.Value}"></TextBox>
+    <TextBox Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Text="{Binding G.Value}"></TextBox>
+    <TextBox Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Text="{Binding B.Value}"></TextBox>
+
+    <TextBlock Margin="5" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1"  Background="{Binding Brush.Value}" ></TextBlock>
+    <Button Grid.Column="2" Grid.Row="4"  VerticalAlignment="Center" Command="{Binding CloseDialog}">OK</Button>
+    <Button Grid.Column="3" Grid.Row="4" Margin="2" VerticalAlignment="Center" Command="{Binding CancelDialog}">Cancel</Button>
+  </Grid>
+</Window>

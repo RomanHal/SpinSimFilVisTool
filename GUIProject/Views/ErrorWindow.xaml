@@ -1,0 +1,18 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:vm="clr-namespace:GUIProject.Views;assembly=GUIProject"
+        Title="Error!"
+        Width="300"
+        Height="100">
+ 
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20"></RowDefinition>
+      <RowDefinition Height="50"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Text="{Binding ErrorType.Value}" TextWrapping="Wrap"></TextBlock>
+    <TextBlock Grid.Row="1" Text="{Binding ErrorMessage.Value}" TextWrapping="Wrap"></TextBlock>
+    <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding CloseWindow}">OK</Button>
+  </Grid>
+</Window>

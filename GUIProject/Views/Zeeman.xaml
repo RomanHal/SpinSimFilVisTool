@@ -1,0 +1,67 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        Title="Zeeman">
+  <Design.DataContext>
+    <vm:ZeemanViewModel/>
+  </Design.DataContext>
+  <Grid ColumnDefinitions="100,130,100" RowDefinitions="30,30,30,30,30,30,30,40" Margin="5">
+    <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Name</TextBlock>
+    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name.Value}"></TextBox>
+    <Button Grid.Row="0" Grid.Column="2" Margin="2" Command="{Binding LookAt}">Look At</Button>
+    <Button Grid.Row="1" Grid.Column="2" Margin="2" Command="{Binding AddPart}" IsEnabled="{Binding !NewEnergyPart.Value}">Add Part</Button>
+    <Button Grid.Row="2" Grid.Column="2" Margin="2" Command="{Binding CancelAddPart}" IsEnabled="{Binding NewEnergyPart.Value}">Cancel</Button>
+    <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Multiplier</TextBlock>
+    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Multiplier.Value}"></TextBox>
+    
+    <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">Steps</TextBlock>
+    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Steps.Value}"></TextBox>
+    
+    <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left"
+               VerticalAlignment="Center" Margin="10,0,0,0" >Visible</TextBlock>
+    <CheckBox Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"
+              Margin="0,0,10,0" IsChecked="{Binding Visible.Value}"></CheckBox>
+    
+    <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Start Field</TextBlock>
+    <TextBox Grid.Row="3" Grid.Column="1" Width="40" HorizontalAlignment="Left"
+             Text="{Binding StartFieldX.Value}"></TextBox>
+    <TextBox Grid.Row="3" Grid.Column="1" Width="40" HorizontalAlignment="Center"
+             Text="{Binding StartFieldY.Value}"></TextBox>
+    <TextBox Grid.Row="3" Grid.Column="1" Width="40" HorizontalAlignment="Right"
+             Text="{Binding StartFieldZ.Value}"></TextBox>
+    
+    <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center"
+           VerticalAlignment="Center">End Field</TextBlock>
+    <TextBox Grid.Row="4" Grid.Column="1" Width="40" HorizontalAlignment="Left"
+             Text="{Binding EndFieldX.Value}"></TextBox>
+    <TextBox Grid.Row="4" Grid.Column="1" Width="40" HorizontalAlignment="Center"
+             Text="{Binding EndFieldY.Value}"></TextBox>
+    <TextBox Grid.Row="4" Grid.Column="1" Width="40" HorizontalAlignment="Right"
+             Text="{Binding EndFieldZ.Value}"></TextBox>
+    
+
+    <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Point</TextBlock>
+    <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Left"
+             Text="{Binding PointX.Value}"></TextBox>
+    <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Center"
+             Text="{Binding PointY.Value}"></TextBox>
+    <TextBox Grid.Row="5" Grid.Column="1" Width="40" HorizontalAlignment="Right"
+             Text="{Binding PointZ.Value}"></TextBox>
+    
+    <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center"
+               VerticalAlignment="Center">Color</TextBlock>
+    <Button Grid.Row="6" Grid.Column="1" Margin="2" Command="{Binding SelectColor}"
+            Background="{Binding ColorBrush.Value}">SelectColor</Button>
+    <Button Grid.Row="8" Grid.Column="0" Margin="3" Command="{Binding Apply}">Apply</Button>
+    <Button Grid.Row="8" Grid.Column="1" Margin="3" HorizontalAlignment="Center" Command="{Binding Delete}">Delete part</Button>
+    <Button Grid.Row="8" Grid.Column="1" Margin="3" HorizontalAlignment="Left" Command="{Binding Previous}">&lt;</Button>
+    <Button Grid.Row="8" Grid.Column="1" Margin="3" HorizontalAlignment="Right" Command="{Binding Next}">></Button>
+    <Button Grid.Row="8" Grid.Column="2" Margin="3" Command="{Binding Back}">Back</Button>
+
+  </Grid>
+
+</Window>

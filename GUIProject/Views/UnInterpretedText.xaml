@@ -1,0 +1,18 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UnInterpretedText"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject">
+
+  <Design.DataContext>
+    <vm:UnInterpretedTextViewModel/>
+  </Design.DataContext>
+  <Grid ColumnDefinitions="auto,100" Margin="2" RowDefinitions="30,30,30,30,30,30,30,30,30">
+    <TextBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="8" Width="500" AcceptsReturn="True" Text="{Binding Text.Value}"/>
+    <Button Grid.Column="1" Grid.Row="1" Margin="2" Command="{Binding Next}">Next >></Button>
+    <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" 
+               HorizontalAlignment="Center" Text="{Binding  PartDescription.Value}"></TextBlock>
+    <Button Grid.Column="1" Grid.Row="3" Margin="2" Content="&lt;&lt; Previous" Command="{Binding Previous}"/>
+    <Button Grid.Column="1" Grid.Row="7" Margin="2" Command="{Binding Apply}">Apply</Button>
+    <Button Grid.Column="1" Grid.Row="8" Margin="2" Command="{Binding Cancel}">Cancel</Button>
+  </Grid>
+</Window>

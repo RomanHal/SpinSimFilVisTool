@@ -1,0 +1,12 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NewEnergy">
+  <Grid ColumnDefinitions="100,100,100" RowDefinitions="30,30,40" Margin="5">
+    <TextBlock Grid.Column="0" Grid.Row="0">Energy Type</TextBlock>
+    <DropDown Grid.Column="1" Grid.Row="0"></DropDown>
+
+    <Button Grid.Column="0" Grid.Row="2" Margin="3">Next</Button>
+    <Button Grid.Column="1" Grid.Row="2" Margin="3">Back</Button>
+    <Button Grid.Column="2" Grid.Row="2" Margin="3">Close</Button>
+  </Grid>
+</Window>

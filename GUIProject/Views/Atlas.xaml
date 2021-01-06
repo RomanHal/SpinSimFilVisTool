@@ -1,0 +1,81 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:GUIProject.ViewModels;assembly=GUIProject"
+        Title="Atlas" Width="330" Height="400">
+  <Design.DataContext>
+    <vm:AtlasViewModel/>
+  </Design.DataContext>
+  <Grid Margin="5" KeyboardNavigation.TabNavigation="Continue" KeyboardNavigation.DirectionalNavigation="Contained" 
+        HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid.ColumnDefinitions > 
+      <ColumnDefinition Width="100"></ColumnDefinition>
+      <ColumnDefinition Width="100"></ColumnDefinition>
+      <ColumnDefinition Width="100"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+      <RowDefinition Height="30"></RowDefinition>
+
+      <RowDefinition Height="40"></RowDefinition>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Atlases</TextBlock>
+    <DropDown Grid.Column="1" Grid.Row="0" Items="{Binding Atlases}" SelectedItem="{Binding SelectedAtlas.Value}"></DropDown>
+    <Button Grid.Column="2" Grid.Row="0" Margin="1" Command="{Binding NewAtlas}" >New Atlas</Button>
+    <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Atlas Name</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding AtlasName.Value}"></TextBox>
+    <Button Grid.Column="2" Grid.Row="1" Margin="1" Command="{Binding LookAtSelectedItem}" 
+            IsVisible="{Binding !IsCreatingNew.Value}" >Look At </Button>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2">Atlas Type</TextBlock>
+    <DropDown  Grid.Column="1" Grid.Row="2" Items="{Binding AtlasType.Value}" SelectedItem="{Binding SelectedAtlasType.Value}"
+               SelectedIndex="{Binding AtlasesIndex.Value}" IsEnabled="{Binding IsCreatingNew.Value}" ></DropDown>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3">X Range</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Width="47" Text="{Binding XMin.Value}"></TextBox >
+    <TextBlock Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center">-</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Width="47" Text="{Binding XMax.Value}"></TextBox>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4">Y Range</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Width="47" Text="{Binding YMin.Value}"></TextBox >
+    <TextBlock Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  VerticalAlignment="Center">-</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Width="47" Text="{Binding YMax.Value}"></TextBox>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="5">Z Range</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Width="47" Text="{Binding ZMin.Value}"></TextBox >
+    <TextBlock Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center"  VerticalAlignment="Center">-</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Width="47" Text="{Binding ZMax.Value}"></TextBox>
+    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="5" Margin="5,0,0,0">
+      Visible</TextBlock>
+    <CheckBox Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right" IsChecked="{Binding Visible.Value}" ></CheckBox>
+    
+    <TextBlock Grid.Column="0" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center">Region</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding Region.Value}"></TextBox>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="8">Color</TextBlock>
+    <Button Margin="2" Grid.Column="1" Grid.Row="8" Command="{Binding SelectColor}" 
+            Background="{Binding ColorBrush.Value}">Select Color</Button>
+    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="8" 
+               Margin="5,0,0,0">By Ms</TextBlock>
+    <CheckBox Grid.Column="2" Grid.Row="8" HorizontalAlignment="Right" IsChecked="{Binding ByMs.Value}"></CheckBox>
+    
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="9" 
+               IsVisible="{Binding ScriptAllowed.Value}">Script</TextBlock>
+    <DropDown  Grid.Column="1" Grid.Row="9" Items="{Binding Scripts}" SelectedItem="{Binding SelectedScript.Value}" IsVisible="{Binding ScriptAllowed.Value}"></DropDown>
+    <Button Margin="1" Grid.Column="2" Grid.Row="9" Command="{Binding CreateNewScript}"  
+            IsVisible="{Binding ScriptAllowed.Value}">Create New</Button>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="10"  
+               IsVisible="{Binding ScriptAllowed.Value}">Script Args</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="10"  IsVisible="{Binding ScriptAllowed.Value}" Text="{Binding ScriptArgs.Value}"/>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="6">MultiAtlas</TextBlock>
+    <TextBox Grid.Column="1" Grid.Row="6"  IsVisible="{Binding NewMultiAtlas.Value}" Text="{Binding SelectedMultiAtlas.Value}"/>
+    <DropDown Grid.Column="1" Grid.Row="6"  IsVisible="{Binding !NewMultiAtlas.Value}" Items="{Binding MultiAtlases}" SelectedItem="{Binding SelectedMultiAtlas.Value}"></DropDown>
+    <Button Grid.Column="2" Grid.Row="6" Margin="1" Command="{Binding CreateNewMultiAtlas}">CreateNew</Button>
+    <Button Grid.Column="0" Grid.Row="11" Margin="2" Command="{Binding Apply}" ClickMode="Press">Apply</Button>
+    <Button Grid.Column="1" Grid.Row="11" Margin="2" Command="{Binding Delete}" ClickMode="Press">Delete</Button>
+    <Button Grid.Column="2" Grid.Row="11" Margin="2" Command="{Binding Cancel}" ClickMode="Press">Cancel</Button>
+  </Grid>
+</Window>
